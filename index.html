@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>数组转换成字符串、筛选、全局局部变量</title>
+</head>
+<body>
+	<script>
+		// 数组转换成字符串
+		// '1-5-9'  arr[i]+'';
+		// 参数：
+		//    arr:特定数组
+		//    str:连接符
+		var arr=[1,5,9,7,9,8,2];
+		var str = con(arr);
+		console.log(str);
+		function con(arr,str){
+			// str = str == undefined ? '-' : str;
+			str = str || '-';
+			var result = '';
+			for(var i=0;i<arr.length;i++){
+				if(i<arr.length-1){
+					result += arr[i]+ str;
+				}else{
+					result += arr[i];
+				}
+				
+			}
+			return result;   //字符串
+		}
+
+
+		// filter();   筛选
+		// 数组里面奇数的数组元素，判断  var newarr[newarr.length]=arr[i]
+		var arr=[1,5,9,20,53,7,9,8,2,10,26,90];
+		console.log(filter(arr));
+		function filter(arr){
+			var newarr = [];
+			for(var i=0;i<arr.length;i++){
+				if(arr[i]%2 == 1){
+					newarr[newarr.length]=arr[i];
+				}
+			}
+			return newarr;  //数组
+		}
+
+		// 全局变量   局部变量
+		var num = 10;
+		function fn(){
+			alert(num);   //undefined
+			var num = 'a';
+			alert(num);   //a
+			aa();
+			function aa(){
+				num = 'x';
+				alert(num);   //x
+			}
+		}
+		alert(num);  //10
+		fn();
+		// 执行
+	</script>
+</body>
+</html>
